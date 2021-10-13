@@ -27,7 +27,6 @@
     <div class="wrapper">
       <h1>Sinnoh Radio</h1>
     </div>
-
   </header>
   <main>
     <div class="wrapper">
@@ -36,11 +35,12 @@
           <p>test</p>
         </div>
         <div class="content-container">
-          <img src="img/route201.png" alt="Route201">
-
+          <button id="play-button" onclick="playMusic()">Play</button>
+          <img src="img/route201.png" alt="">
         </div>
         <div class="input-container">
-
+          <button class="time-button" id="day-button" onclick="switchTrack('day')">Day</button>
+          <button class="time-button" id="night-button" onclick="switchTrack('night')">Night</button>
         </div>
       </div>
     </div>
@@ -57,6 +57,7 @@
 
   </footer>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/jquery.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
 
