@@ -32,11 +32,20 @@
     <div class="wrapper">
       <div class="main-container">
         <div class="nav-container">
-          <p>test</p>
+          <div class="grid-container">
+            <button id="left" onclick="switchLocation('left')">◀</button>
+            <button id="up" onclick="switchLocation('up')">▲</button>
+            <div class="location-container">
+              <p id="location-text">Route 201</p>
+            </div>
+
+            <button id="right" onclick="switchLocation('right')">▶</button>
+            <button id="down" onclick="switchLocation('down')">▼</button>
+          </div>
         </div>
         <div class="content-container">
           <button id="play-button" onclick="playMusic()">Play</button>
-          <img src="img/route201.png" alt="">
+          <img id="location-image" src="img/route201.png" alt="">
         </div>
         <div class="input-container">
           <button class="time-button" id="day-button" onclick="switchTrack('day')">Day</button>
@@ -59,6 +68,7 @@
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/jquery.js"></script>
   <script src="js/plugins.js"></script>
+  <script src="js/locations.js"></script>
   <script src="js/main.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
