@@ -33,23 +33,28 @@
       <div class="main-container">
         <div class="nav-container">
           <div class="grid-container">
-            <button id="left" onclick="switchLocation('left')">◀</button>
-            <button id="up" onclick="switchLocation('up')">▲</button>
+            <button id="left">◀</button>
+            <button id="up">▲</button>
             <div class="location-container">
               <p id="location-text">Route 201</p>
             </div>
-
-            <button id="right" onclick="switchLocation('right')">▶</button>
-            <button id="down" onclick="switchLocation('down')">▼</button>
+            <button id="right">▶</button>
+            <button id="down">▼</button>
           </div>
         </div>
         <div class="content-container">
-          <button id="play-button" onclick="playMusic()">Play</button>
-          <img id="location-image" src="img/route201.png" alt="">
+          <button id="play-button">Play</button>
+          <div class="image-container">
+            <img id="location-image" src="img/route201.png" alt="">
+            <span id="filter"></span>
+          </div>
+
+          <div class="filter"></div>
         </div>
         <div class="input-container">
-          <button class="time-button" id="day-button" onclick="switchTrack('day')">Day</button>
-          <button class="time-button" id="night-button" onclick="switchTrack('night')">Night</button>
+          <div class="button-container">
+          </div>
+
         </div>
       </div>
     </div>

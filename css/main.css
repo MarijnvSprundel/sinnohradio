@@ -88,7 +88,6 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
 *{
   font-family: 'Exo 2', sans-serif;
   color: white;
@@ -176,12 +175,26 @@ header h1{
   justify-content: center;
   align-items: center;
 }
-.content-container img{
-  height: 350px;
+.image-container{
+  position: relative;
   border: 10px solid #151515;
   border-radius: 20px;
+  overflow: hidden;
+}
+#filter{
+  transition: background-color 300ms ease-in-out, mix-blend-mode 300ms ease-in-out;
+  position: absolute;
+  content: '';
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: multiply;
+}
+.content-container img{
+  height: 350px;
   z-index: 1;
-  transition: 1s filter;
 }
 .input-container{
   height: 200px;
