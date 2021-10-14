@@ -208,18 +208,36 @@ footer{
 }
 .footer-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 .footer-container a{
   font-size: 1.7rem;
   text-decoration: none;
   font-weight: bolder;
-  margin: 0 5rem;
 
 }
 .wrapper{
   width: 70%;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1000px) {
+  .content-container img{
+    width: 100%;
+    height: auto;
+  }
+  .wrapper{
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .button-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper{
+    width: 95%;
+  }
 }
 
 /* ==========================================================================
