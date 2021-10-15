@@ -24,7 +24,7 @@
 
 <body>
   <header>
-    <div class="wrapper">
+    <div class="wrapper header-wrapper">
       <h1>Sinnoh Radio</h1>
     </div>
   </header>
@@ -33,13 +33,13 @@
       <div class="main-container">
         <div class="nav-container">
           <div class="grid-container">
-            <button id="left">◀</button>
-            <button id="up">▲</button>
+            <button id="left" class="nav-button">◀</button>
+            <button id="up" class="nav-button">▲</button>
             <div class="location-container">
               <p id="location-text">Route 201</p>
             </div>
-            <button id="right">▶</button>
-            <button id="down">▼</button>
+            <button id="right" class="nav-button">▶</button>
+            <button id="down" class="nav-button">▼</button>
           </div>
         </div>
         <div class="content-container">
@@ -52,9 +52,7 @@
           <div class="filter"></div>
         </div>
         <div class="input-container">
-          <div class="button-container">
-          </div>
-
+          <div class="button-container"></div>
         </div>
       </div>
     </div>

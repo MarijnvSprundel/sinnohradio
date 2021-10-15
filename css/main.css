@@ -229,6 +229,10 @@ footer{
   .wrapper{
     width: 80%;
   }
+  .header-wrapper{
+    display: flex;
+    justify-content: center;
+  }
 }
 @media only screen and (max-width: 600px) {
   .button-container{
