@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
+
+  <script src="https://kit.fontawesome.com/5494a7000c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -43,10 +45,14 @@
           </div>
         </div>
         <div class="content-container">
-          <button id="play-button">Play</button>
+          <i id="play-button" class="fas fa-play play-button"></i>
+<!--          <button id="play-button">Play</button>-->
           <div class="image-container">
             <img id="location-image" src="img/route201.png" alt="">
             <span id="filter"></span>
+          </div>
+          <div class="control-container">
+            <i id="play-button" class="fas fa-play play-button-small"></i>
           </div>
 
           <div class="filter"></div>

@@ -136,12 +136,15 @@ function playMusic(){
   if(selectAudio()[0].paused){
     selectAudio()[0].play();
     isPlaying = true;
-    playButton.textContent = "Pause";
+    playButton.classList.remove("fa-play");
+    playButton.classList.add("fa-pause");
   }
   else{
     selectAudio()[0].pause();
     isPlaying = false;
-    playButton.textContent = "Play";
+    playButton.classList.remove("fa-pause");
+    playButton.classList.add("fa-play");
+
   }
 }
 
