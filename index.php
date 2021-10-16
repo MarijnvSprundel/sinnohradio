@@ -45,14 +45,20 @@
           </div>
         </div>
         <div class="content-container">
-          <i id="play-button" class="fas fa-play play-button"></i>
+          <i id="play-button" class="fas fa-play play-button play-button-selector"></i>
 <!--          <button id="play-button">Play</button>-->
           <div class="image-container">
             <img id="location-image" src="img/route201.png" alt="">
             <span id="filter"></span>
           </div>
           <div class="control-container">
-            <i id="play-button" class="fas fa-play play-button-small"></i>
+            <div class="control-wrapper">
+              <i id="play-button-small" class="fas fa-play play-button-small play-button-selector"></i>
+              <div class="slider-container">
+                <input type="range" min="0" max="1000" value="0" class="slider" id="audio-slider">
+              </div>
+              <i id="audio-button" class="fas fa-volume-up audio-button"></i>
+            </div>
           </div>
 
           <div class="filter"></div>

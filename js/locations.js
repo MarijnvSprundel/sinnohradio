@@ -1,7 +1,6 @@
 locations = [
   {
     "name":"Route 201",
-    "coords":[0, 0],
     "leftBorder":"Lake Verity",
     "rightBorder":"Sandgem Town",
     "downBorder":"Twinleaf Town",
@@ -23,7 +22,6 @@ locations = [
   },
   {
     "name":"Canalave City",
-    "coords":[-1, 2],
     "rightBorder":"Route 218",
     "track":[
       {
@@ -39,7 +37,6 @@ locations = [
   },
   {
     "name":"Twinleaf Town",
-    "coords":[0, -1],
     "upBorder":"Route 201",
     "track":[
       {
@@ -55,7 +52,6 @@ locations = [
   },
   {
     "name":"Lake Verity",
-    "coords":[-1, 0],
     "rightBorder":"Route 201",
     "track":[
       {
@@ -67,7 +63,6 @@ locations = [
   },
   {
     "name":"Sandgem Town",
-    "coords":[1, 0],
     "leftBorder":"Route 201",
     "upBorder":"Route 202",
     "track":[
@@ -84,7 +79,6 @@ locations = [
   },
   {
     "name":"Route 202",
-    "coords":[1, 1],
     "upBorder":"Jubilife City",
     "downBorder":"Sandgem Town",
     "track":[
@@ -101,7 +95,6 @@ locations = [
   },
   {
     "name":"Jubilife City",
-    "coords":[1, 2],
     "leftBorder":"Route 218",
     "downBorder":"Route 202",
     "rightBorder":"Route 203",
@@ -123,7 +116,6 @@ locations = [
   },
   {
     "name":"Route 218",
-    "coords":[0, 2],
     "leftBorder":"Canalave City",
     "rightBorder":"Jubilife City",
     "track":[
@@ -140,7 +132,6 @@ locations = [
   },
   {
     "name":"Route 203",
-    "coords":[2, 2],
     "leftBorder":"Jubilife City",
     "track":[
       {
@@ -156,7 +147,6 @@ locations = [
   },
   {
     "name":"Mystery Zone",
-    "coords":[666, 666],
     "track":[
       {
         "src":"mysteryzone.mp3",

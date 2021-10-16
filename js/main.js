@@ -1,7 +1,6 @@
 let timeSelected, audioVolume, audio, audio2, trackInfo;
 
-
-
+let mouseDown = false;
 let isPlaying = false;
 let isSwitching = false;
 let activeTrack = 0;
@@ -12,13 +11,26 @@ audio2 = new Audio();
 
 audioVolume = 0.1
 audio.volume = audio2.volume = audioVolume;
-let coordinates = [0, 0];
 let locationIndex = checkLocation("Route 201");
 trackInfo = getTrackInfo(timeSelected);
 
-const playButton = document.getElementById("play-button");
-playButton.addEventListener("click", function(){
-  playMusic();
+const audioSlider = document.getElementById("audio-slider");
+audioSlider.addEventListener("mouseup", function(){
+  selectAudio()[0].currentTime = (audioSlider.value / 1000) * selectAudio()[0].duration;
+  mouseDown = false;
+});
+audioSlider.addEventListener("mousedown", function (){
+  mouseDown = true;
+});
+$(".play-button-selector").click(function (){
+  musicController();
+});
+
+$(".content-container").mouseenter(function(){
+  $(".play-button").css("opacity", "1");
+});
+$(".content-container").mouseleave(function(){
+  $(".play-button").css("opacity", "0");
 });
 
 const upButton = document.getElementById("up");
@@ -64,6 +76,8 @@ function logKey(e){
       break;
   }
 }
+
+
 
 
 audio.src = "audio/" + trackInfo[0];
@@ -132,19 +146,33 @@ function getTrackInfo(time){
 
 }
 
-function playMusic(){
-  if(selectAudio()[0].paused){
-    selectAudio()[0].play();
-    isPlaying = true;
-    playButton.classList.remove("fa-play");
-    playButton.classList.add("fa-pause");
-  }
-  else{
+
+
+let interval;
+
+function musicController(args){
+  if(args == "pause" || !selectAudio()[0].paused){
     selectAudio()[0].pause();
     isPlaying = false;
-    playButton.classList.remove("fa-pause");
-    playButton.classList.add("fa-play");
+    clearInterval(interval);
+    $(".play-button-selector").removeClass("fa-pause");
+    $(".play-button-selector").addClass("fa-play");
+  }
+  else if(selectAudio()[0].paused){
+    selectAudio()[0].play();
+    isPlaying = true;
+    interval = setInterval(updateSlider, 100);
+    $(".play-button-selector").removeClass("fa-play");
+    $(".play-button-selector").addClass("fa-pause");
+  }
+}
 
+function updateSlider(){
+  if(!mouseDown){
+    audioSlider.value = (selectAudio()[0].currentTime / selectAudio()[0].duration) * 1000;
+    if(selectAudio()[0].currentTime == selectAudio()[0].duration){
+      musicController("pause");
+    }
   }
 }
 
@@ -216,5 +244,4 @@ function generateTimeButtons(){
       buttonContainer.appendChild(button);
     });
   }
-
 }
