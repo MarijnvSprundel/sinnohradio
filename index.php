@@ -20,11 +20,13 @@
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
+
+  <script src="https://kit.fontawesome.com/5494a7000c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <header>
-    <div class="wrapper">
+    <div class="wrapper header-wrapper">
       <h1>Sinnoh Radio</h1>
     </div>
   </header>
@@ -33,28 +35,30 @@
       <div class="main-container">
         <div class="nav-container">
           <div class="grid-container">
-            <button id="left">◀</button>
-            <button id="up">▲</button>
+            <button id="left" class="nav-button">◀</button>
+            <button id="up" class="nav-button">▲</button>
             <div class="location-container">
               <p id="location-text">Route 201</p>
             </div>
-            <button id="right">▶</button>
-            <button id="down">▼</button>
+            <button id="right" class="nav-button">▶</button>
+            <button id="down" class="nav-button">▼</button>
           </div>
         </div>
         <div class="content-container">
-          <button id="play-button">Play</button>
+          <i id="play-button" class="fas fa-play play-button"></i>
+<!--          <button id="play-button">Play</button>-->
           <div class="image-container">
             <img id="location-image" src="img/route201.png" alt="">
             <span id="filter"></span>
+          </div>
+          <div class="control-container">
+            <i id="play-button" class="fas fa-play play-button-small"></i>
           </div>
 
           <div class="filter"></div>
         </div>
         <div class="input-container">
-          <div class="button-container">
-          </div>
-
+          <div class="button-container"></div>
         </div>
       </div>
     </div>

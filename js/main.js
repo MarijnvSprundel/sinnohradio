@@ -1,12 +1,10 @@
-let audioSource, timeSelected, audioVolume, audio, audio2, trackInfo;
+let timeSelected, audioVolume, audio, audio2, trackInfo;
 
 
 
 let isPlaying = false;
 let isSwitching = false;
 let activeTrack = 0;
-let bpmday = 169;
-let bpmnight = 138;
 
 timeSelected = "day";
 audio = new Audio();
@@ -15,41 +13,65 @@ audio2 = new Audio();
 audioVolume = 0.1
 audio.volume = audio2.volume = audioVolume;
 let coordinates = [0, 0];
-let locationIndex = checkLocation();
+let locationIndex = checkLocation("Route 201");
 trackInfo = getTrackInfo(timeSelected);
-
 
 const playButton = document.getElementById("play-button");
 playButton.addEventListener("click", function(){
   playMusic();
 });
+
 const upButton = document.getElementById("up");
-upButton.addEventListener("click", function(){
-  coordinates[1] += 1;
-  update();
-});
 const downButton = document.getElementById("down");
-downButton.addEventListener("click", function(){
-  coordinates[1] -= 1;
-  update();
-});
 const leftButton = document.getElementById("left");
-leftButton.addEventListener("click", function(){
-  coordinates[0] -= 1;
-  update();
-});
 const rightButton = document.getElementById("right");
-rightButton.addEventListener("click", function(){
-  coordinates[0] += 1;
-  update();
+
+Array.prototype.forEach.call(document.getElementsByClassName("nav-button"), function(element) {
+  element.addEventListener("click", function(){
+    if(checkBorder(element.id)){
+      update(locations[locationIndex][element.id + "Border"]);
+    }
+  });
 });
+
+document.addEventListener('keydown', logKey);
+function logKey(e){
+  switch (e.target.tagName){
+    //ADD EXCEPTIONS TO KEYBOARD INPUT BELOW
+    case "INPUT": case "SELECT": case "TEXTAREA": return;
+  }
+
+  switch (e.key){
+    case "w":
+      if(checkBorder("up")){
+        update(locations[locationIndex]["upBorder"]);
+      }
+      break;
+    case "a":
+      if(checkBorder("left")){
+        update(locations[locationIndex]["leftBorder"]);
+      }
+      break;
+    case "s":
+      if(checkBorder("down")){
+        update(locations[locationIndex]["downBorder"]);
+      }
+      break;
+    case "d":
+      if(checkBorder("right")){
+        update(locations[locationIndex]["rightBorder"]);
+      }
+      break;
+  }
+}
+
 
 audio.src = "audio/" + trackInfo[0];
 const locationImage = document.getElementById("location-image");
 const locationText = document.getElementById("location-text");
 
-function update(){
-  locationIndex = checkLocation();
+function update(place){
+  locationIndex = checkLocation(place);
   locationImage.src = "img/" + locations[locationIndex]["image"];
   locationText.textContent = locations[locationIndex]["name"];
   arrowSelector();
@@ -66,36 +88,41 @@ function update(){
 arrowSelector();
 function arrowSelector(){
   upButton.style.visibility = rightButton.style.visibility = leftButton.style.visibility = downButton.style.visibility = "hidden";
-  locations.forEach((item) => {
-    switch (JSON.stringify(item["coords"])) {
-      case JSON.stringify([coordinates[0] + 1, coordinates[1]]):
-        rightButton.style.visibility = "visible";
-        break;
-      case JSON.stringify([coordinates[0] - 1, coordinates[1]]):
-        leftButton.style.visibility = "visible";
-        break;
-      case JSON.stringify([coordinates[0], coordinates[1] + 1]):
-        upButton.style.visibility = "visible";
-        break;
-      case JSON.stringify([coordinates[0], coordinates[1] - 1]):
-        downButton.style.visibility = "visible";
-        break;
-    }
-  });
+  if(checkBorder("right")){
+    rightButton.style.visibility = "visible";
+  }
+  if(checkBorder("left")){
+    leftButton.style.visibility = "visible";
+  }
+  if(checkBorder("up")){
+    upButton.style.visibility = "visible";
+  }
+  if(checkBorder("down")){
+    downButton.style.visibility = "visible";
+  }
 }
-function checkLocation(){
-  let i = locations.findIndex((item) => item.coords[0] == coordinates[0] && item.coords[1] == coordinates[1]);
+function checkBorder(dir){
+  if(locations[locationIndex][dir + "Border"] === undefined){
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+function checkLocation(place){
+  let i = locations.findIndex((item) => item.name == place);
   if(i != -1){
     return i;
   }
   else{
-    return locations.findIndex((item) => item.coords[0] === 666 && item.coords[1] === 666);
+    return locations.findIndex((item) => item.name == "Mystery Zone");
   }
 
 }
 
 function getTrackInfo(time){
   const i = locations[locationIndex]["track"].findIndex((item) => item.src.endsWith(time + ".mp3"));
+
   if(i != -1){
     return [locations[locationIndex]["track"][i]["src"], locations[locationIndex]["track"][i]["bpm"]];
   }
@@ -109,12 +136,15 @@ function playMusic(){
   if(selectAudio()[0].paused){
     selectAudio()[0].play();
     isPlaying = true;
-    playButton.textContent = "Pause";
+    playButton.classList.remove("fa-play");
+    playButton.classList.add("fa-pause");
   }
   else{
     selectAudio()[0].pause();
     isPlaying = false;
-    playButton.textContent = "Play";
+    playButton.classList.remove("fa-pause");
+    playButton.classList.add("fa-play");
+
   }
 }
 

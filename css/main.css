@@ -156,14 +156,28 @@ header h1{
 #down{
   grid-area: 3 / 2 / 3 / 2;
 }
-#play-button{
+.play-button{
+  font-size: 30px;
   position: absolute;
   z-index: 2;
+}
+.control-container{
+  position: absolute;
+  bottom: 0;
+  height: 15%;
+  z-index: 2;
+  width: 100%;
+  background: rgba(37, 37, 37, 0.82);
+  overflow: hidden;
+  display: block;
+}
+.play-button-small{
+
 }
 .time-button{
   margin: 10px;
 }
-.time-button, #play-button{
+.time-button, .play-button{
   background-color: #2c2c2c;
   border: none;
   padding: 10px 20px;
@@ -171,6 +185,7 @@ header h1{
   cursor: pointer;
 }
 .content-container{
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,6 +234,29 @@ footer{
 .wrapper{
   width: 70%;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1000px) {
+  .content-container img{
+    width: 100%;
+    height: auto;
+  }
+  .wrapper{
+    width: 80%;
+  }
+  .header-wrapper{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .button-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper{
+    width: 95%;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
