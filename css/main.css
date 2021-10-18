@@ -161,10 +161,10 @@ header h1{
   position: absolute;
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.1s;
+  transition: opacity 0.3s;
 }
 .control-wrapper{
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -188,34 +188,47 @@ header h1{
 }
 .right-control-container{
   display: flex;
-  align-items: center;
+  justify-content: center;
+  width: 80px;
 }
-.right-control-container *{
-  margin: 0 5px;
-}
+
 .time-slider{
   vertical-align: center;
   width: 100%;
 }
-.audio-button{
+.volume-container{
+  transform: rotate(270deg);
+  display: flex;
   position: relative;
-
 }
 .volume-slider-container{
-  transform: rotate(270deg);
-  position: absolute;
-  top: -55px;
-  right: 53px;
   background: rgba(37, 37, 37, 0.82);
   border-radius: 10px;
   display: flex;
-  height: 25px;
+  top: -4px;
+  left: 30px;
+  align-items: center;
+  position: absolute;
+  padding: 4px;
+  visibility: hidden;
+}
+.volume-container i{
+  transform: rotate(90deg);
+  cursor: pointer;
 }
 .volume-slider{
   width: 70px;
 }
+.left-control-container{
+  display: flex;
+  align-items: center;
+  width: 80px;
+  display: flex;
+  justify-content: space-around;
+}
 .play-button-small{
   cursor: pointer;
+
 }
 .time-button{
   margin: 10px;

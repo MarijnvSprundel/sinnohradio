@@ -1,4 +1,4 @@
-let timeSelected, audioVolume, audio, audio2, trackInfo;
+let timeSelected, audio, audio2, trackInfo, timeoutUI, volumeLevel;
 
 let mouseDown = false;
 let isPlaying = false;
@@ -22,6 +22,20 @@ timeSlider.addEventListener("mouseup", function(){
 timeSlider.addEventListener("mousedown", function (){
   mouseDown = true;
 });
+$("#volume-button").click(function(){
+  if($(".volume-slider-container").css("visibility") == "visible"){
+    $(".volume-slider-container").css("visibility", "hidden");
+  }
+  else{
+    $(".volume-slider-container").css("visibility", "visible");
+  }
+
+});
+$("#volume-slider").on('input', function (){
+  volumeLevel = $(this).val() / 100;
+  audio.volume = volumeLevel;
+  audio2.volume = volumeLevel;
+});
 $(".play-button-selector").click(function (){
   musicController();
 });
@@ -29,10 +43,13 @@ $(".play-button-selector").click(function (){
 $(".content-container").mouseenter(function(){
   $(".play-button").css("opacity", "1");
   $(".control-container").css("opacity", "1");
+  clearTimeout(timeoutUI);
 });
 $(".content-container").mouseleave(function(){
-  $(".play-button").css("opacity", "0");
-  $(".control-container").css("opacity", "1");
+  timeoutUI = setTimeout(function(){
+    $(".play-button").css("opacity", "0");
+    $(".control-container").css("opacity", "0");
+  }, 3000);
 });
 
 const upButton = document.getElementById("up");
@@ -201,7 +218,7 @@ function switchTrack(time){
       isSwitching = true;
       audioArray[1].play();
       $(audioArray[0]).animate({volume: 0}, 200);
-      $(audioArray[1]).animate({volume: audioVolume}, 200, function() {
+      $(audioArray[1]).animate({volume: volumeLevel}, 200, function() {
         audioArray[0].pause();
         activeTrack = 1 - activeTrack;
         isSwitching = false;
