@@ -172,6 +172,7 @@ header h1{
   height: 100%;
 }
 .control-container{
+  opacity: 0;
   position: absolute;
   flex-direction: row;
   height: 10%;
@@ -179,17 +180,42 @@ header h1{
   width: 100%;
   bottom: 0;
   background: rgba(37, 37, 37, 0.82);
+  transition: 0.1s opacity;
 }
 .slider-container{
   display: inline;
   width: 80%;
 }
-#audio-slider{
+.right-control-container{
+  display: flex;
+  align-items: center;
+}
+.right-control-container *{
+  margin: 0 5px;
+}
+.time-slider{
   vertical-align: center;
   width: 100%;
 }
-.play-button-small{
+.audio-button{
+  position: relative;
 
+}
+.volume-slider-container{
+  transform: rotate(270deg);
+  position: absolute;
+  top: -55px;
+  right: 53px;
+  background: rgba(37, 37, 37, 0.82);
+  border-radius: 10px;
+  display: flex;
+  height: 25px;
+}
+.volume-slider{
+  width: 70px;
+}
+.play-button-small{
+  cursor: pointer;
 }
 .time-button{
   margin: 10px;
@@ -226,6 +252,7 @@ header h1{
   height: 350px;
   z-index: 2;
 }
+
 .input-container{
   height: 200px;
 }

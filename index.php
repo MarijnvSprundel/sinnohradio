@@ -55,9 +55,19 @@
             <div class="control-wrapper">
               <i id="play-button-small" class="fas fa-play play-button-small play-button-selector"></i>
               <div class="slider-container">
-                <input type="range" min="0" max="1000" value="0" class="slider" id="audio-slider">
+                <input type="range" min="0" max="1000" value="0" class="time-slider slider" id="time-slider">
               </div>
-              <i id="audio-button" class="fas fa-volume-up audio-button"></i>
+              <div class="right-control-container">
+                <div class="volume-container">
+                  <i id="audio-button" class="fas fa-volume-up audio-button"></i>
+                  <div class="volume-slider-container">
+                    <input type="range" min="0" max="100" value="40" class="volume-slider slider" id="volume-slider">
+                  </div>
+
+                </div>
+                <i id="setting-button" class="fas fa-cog"></i>
+              </div>
+
             </div>
           </div>
 
